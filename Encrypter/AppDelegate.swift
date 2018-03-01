@@ -10,6 +10,10 @@ import UIKit
 
 var navController = UINavigationController()
 
+public struct Constants {
+    static let BCK_SPACE = -92
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -31,11 +35,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        print(user.pin)
         
-//        let controller = SetPin()
-//        navController = UINavigationController(rootViewController: controller)
-//        navController.navigationBar.isHidden = true
-//        self.window?.rootViewController = navController
-//        self.window?.makeKeyAndVisible()
+        let controller = SetPin()
+        navController = UINavigationController(rootViewController: controller)
+        navController.navigationBar.isHidden = true
+        self.window?.rootViewController = navController
+        self.window?.makeKeyAndVisible()
         
         return true
     }

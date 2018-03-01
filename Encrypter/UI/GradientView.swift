@@ -7,8 +7,8 @@ class GradientView: BaseLayoutView {
     override func configureView() {
         super.configureView()
         
-        let firstColor = UIColor(red: 20/255, green: 200/255, blue: 100/255, alpha: 1.0).cgColor
-        let secondColor = UIColor(red: 30/255, green: 210/255, blue: 110/255, alpha: 1.0).cgColor
+        let secondColor = UIColor(red: 93/255, green: 65/255, blue: 87/255, alpha: 1.0).cgColor
+        let firstColor = UIColor(red: 168/255, green: 202/255, blue: 186/255, alpha: 1.0).cgColor
         
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = frame
