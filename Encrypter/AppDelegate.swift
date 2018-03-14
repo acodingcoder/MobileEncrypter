@@ -14,6 +14,25 @@ public struct Constants {
     static let BCK_SPACE = -92
 }
 
+public struct DeviceInfo {
+    static var keyboardHeight: Double!
+}
+
+func setDeviceInfo() -> Double {
+    switch UIScreen.main.bounds.height {
+    case 812:
+        return 291.0
+    case 736:
+        return 226.0
+    case 667:
+        return 216.0
+    case 568:
+        return 216.0
+    default:
+        return 216.0
+    }
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -22,21 +41,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         
-//        Defaults.pin = nil
-//        Defaults.userManager.setDefaults()
+        DeviceInfo.keyboardHeight = setDeviceInfo()
         
-//        let user = UserDefaultData.localDataManager
-//
-//        if (user.pin.isEmpty) {
-//            print("no pin")
-//        } else {
-//            print("pin")
-//        }
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        var controller : UIViewController? = nil
+        
+        let user = UserDefaultData.localDataManager
+
+        if (user.pin.isEmpty) {
+            controller = CreatePin()
+        } else {
+            controller = EnterPin()
+        }
         
 //        print(user.pin)
         
-        let controller = SetPin()
-        navController = UINavigationController(rootViewController: controller)
+        navController = UINavigationController(rootViewController: controller!)
         navController.navigationBar.isHidden = true
         self.window?.rootViewController = navController
         self.window?.makeKeyAndVisible()

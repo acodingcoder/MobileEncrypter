@@ -6,7 +6,7 @@ struct Defaults {
     static let userManager = Defaults()
     static var pin: String!
     
-    func setDefaults(){
+    func setDefaults() {
         
         let defaults = UserDefaults.standard
         

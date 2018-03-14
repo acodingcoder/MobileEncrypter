@@ -126,23 +126,23 @@ protocol HasKeyboardComponent { var keyboardComponent: ViewComponent { get set }
 //Adds an additional blank view that is the size of the keyboard
 protocol Keyboardable: HasKeyboardComponent where Self: UIView { }
 
-//extension Keyboardable {
-//    var keyboardView: UIView {
-//        get { return keyboardComponent.view }
-//        set { keyboardComponent.view = newValue }
-//    }
-//
-//    func addKeyboardView() {
-//        addSubview(keyboardView)
-//
-//        keyboardView.snp.makeConstraints { (make) in
-//            make.left.equalToSuperview()
-//            make.right.equalToSuperview()
-//            make.bottom.equalTo(0)
-//            make.height.equalTo(DeviceInfo.keyboardHeight)
-//        }
-//    }
-//}
+extension Keyboardable {
+    var keyboardView: UIView {
+        get { return keyboardComponent.view }
+        set { keyboardComponent.view = newValue }
+    }
+
+    func addKeyboardView() {
+        addSubview(keyboardView)
+
+        keyboardView.snp.makeConstraints { (make) in
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalTo(0)
+            make.height.equalTo(DeviceInfo.keyboardHeight)
+        }
+    }
+}
 
 
 public class BaseViewController: UIViewController {
