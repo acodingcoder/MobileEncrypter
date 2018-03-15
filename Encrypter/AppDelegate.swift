@@ -129,6 +129,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var image = UIImage(named: "lock")
         
+        navController = UINavigationController(rootViewController: controller!)
+        navController.navigationBar.isHidden = true
+        self.window?.rootViewController = navController
+        self.window?.makeKeyAndVisible()
         
         return true
     }
