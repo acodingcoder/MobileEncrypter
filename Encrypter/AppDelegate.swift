@@ -77,6 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var image = UIImage(named: "lock")
         
+        
         return true
     }
 
