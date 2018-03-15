@@ -26,6 +26,26 @@ func setDeviceInfo() -> Double {
     }
 }
 
+struct RGB {
+    var r : CGFloat
+    var g : CGFloat
+    var b : CGFloat
+}
+
+var RGBs : [RGB] = []
+
+//if let height = image.cgImage?.height {
+//    if let width = image.cgImage?.width {
+//        for i in 0...height {
+//            for x in 0...width {
+//                let (r, g, b) = image.getPixelColor(pos: CGPoint(x: i, y: x))
+//                let rgb = RGB(r: r, g: g, b: b)
+//                RGBs.append(rgb)
+//            }
+//        }
+//    }
+//}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -41,19 +61,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         
         //Check if pin is set
-        var controller : UIViewController? = nil
-        let user = UserDefaultData.localDataManager
-
-        if (user.pin.isEmpty) {
-            controller = CreatePin()
-        } else {
-            controller = EnterPin()
-        }
+//        var controller : UIViewController? = nil
+//        let user = UserDefaultData.localDataManager
+//
+//        if (user.pin.isEmpty) {
+//            controller = CreatePin()
+//        } else {
+//            controller = EnterPin()
+//        }
+//
+//        navController = UINavigationController(rootViewController: controller!)
+//        navController.navigationBar.isHidden = true
+//        self.window?.rootViewController = navController
+//        self.window?.makeKeyAndVisible()
         
-        navController = UINavigationController(rootViewController: controller!)
-        navController.navigationBar.isHidden = true
-        self.window?.rootViewController = navController
-        self.window?.makeKeyAndVisible()
+        var image = UIImage(named: "lock")
         
         return true
     }
