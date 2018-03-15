@@ -26,6 +26,58 @@ func setDeviceInfo() -> Double {
     }
 }
 
+class PlaygroundsView : BaseLayoutView {
+    
+    var origImage = UIImageView()
+    var recreatedImage = UIImageView()
+    
+    override func configureView() {
+        addSubview(origImage)
+        addSubview(recreatedImage)
+        super.configureView()
+        
+        origImage.image = #imageLiteral(resourceName: "lock")
+        
+        applyConstraints()
+    }
+    
+    override func applyConstraints() {
+        origImage.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().multipliedBy(0.5)
+        }
+        
+        recreatedImage.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().multipliedBy(1.5)
+        }
+    }
+}
+
+class Playgrounds : BaseViewController {
+    
+    override var contentView: PlaygroundsView {
+        return view as! PlaygroundsView
+    }
+
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func loadView() {
+        view = PlaygroundsView()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    override func handleNavigation() {
+    }
+
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -41,19 +93,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         
         //Check if pin is set
-        var controller : UIViewController? = nil
-        let user = UserDefaultData.localDataManager
-
-        if (user.pin.isEmpty) {
-            controller = CreatePin()
-        } else {
-            controller = EnterPin()
-        }
+          var controller : UIViewController? = nil
+//        let user = UserDefaultData.localDataManager
+//
+//        if (user.pin.isEmpty) {
+//            controller = CreatePin()
+//        } else {
+//            controller = EnterPin()
+//        }
+//
+        controller = Playgrounds()
         
         navController = UINavigationController(rootViewController: controller!)
         navController.navigationBar.isHidden = true
         self.window?.rootViewController = navController
         self.window?.makeKeyAndVisible()
+        
         
         return true
     }
