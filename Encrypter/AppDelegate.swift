@@ -71,19 +71,23 @@ class Playgrounds : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let image = contentView.origImage.image
+        let image = contentView.origImage.image!
         
-        if let height = image?.cgImage?.height {
-            if let width = image?.cgImage?.width {
-                for i in 0...height {
-                    for x in 0...width {
-                        let (r, g, b) = (image?.getPixelColor(pos: CGPoint(x: i, y: x)))!
+        if let height = image.cgImage?.height {
+            if let width = image.cgImage?.width {
+                for i in 0..<height {
+                    for x in 0..<width {
+                        let (r, g, b) = image.getPixelColor(pos: CGPoint(x: i, y: x))
                         let rgb = RGB(r: r, g: g, b: b)
                         RGBs.append(rgb)
                     }
                 }
             }
         }
+        
+        var recreatedImage = UIImage()
+        
+        contentView.recreatedImage.image = recreatedImage
         
         print(RGBs)
     }
@@ -126,8 +130,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }
 //
         controller = Playgrounds()
-        
-        var image = UIImage(named: "lock")
         
         navController = UINavigationController(rootViewController: controller!)
         navController.navigationBar.isHidden = true
