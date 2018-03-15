@@ -1,10 +1,3 @@
-//
-//  AppDelegate.swift
-//  Encrypter
-//
-//  Created by QuickTutor on 2/20/18.
-//  Copyright © 2018 CPS410. All rights reserved.
-//
 
 import UIKit
 
@@ -41,12 +34,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
         
+        //Save keyboard height to DeviceInfo
         DeviceInfo.keyboardHeight = setDeviceInfo()
         
+        //Sets statusbar to white
         UIApplication.shared.statusBarStyle = .lightContent
         
+        //Check if pin is set
         var controller : UIViewController? = nil
-        
         let user = UserDefaultData.localDataManager
 
         if (user.pin.isEmpty) {
@@ -54,8 +49,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             controller = EnterPin()
         }
-        
-//        print(user.pin)
         
         navController = UINavigationController(rootViewController: controller!)
         navController.navigationBar.isHidden = true

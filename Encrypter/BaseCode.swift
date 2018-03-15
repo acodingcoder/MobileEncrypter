@@ -1,10 +1,3 @@
-//
-//  BaseCode.swift
-//  Encrypter
-//
-//  Created by QuickTutor on 2/20/18.
-//  Copyright © 2018 CPS410. All rights reserved.
-//
 
 import UIKit
 import SnapKit

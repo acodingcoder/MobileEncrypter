@@ -1,10 +1,4 @@
-//
-//  EnterPin.swift
-//  Encrypter
-//
-//  Created by QuickTutor on 3/14/18.
-//  Copyright © 2018 CPS410. All rights reserved.
-//
+
 
 import Foundation
 import UIKit
@@ -42,14 +36,17 @@ class EnterPin : BaseViewController {
     @objc
     private func buildVerificationCode(_ textField: UITextField) {
         verificationCode.append(textField.text!)
-        //set defaults
+        
+        if verificationCode.count == 6 {
+            contentView.arrow.isUserInteractionEnabled = true
+        }
     }
     private func textFieldController(current: UITextField, textFieldToChange: UITextField) {
         current.isEnabled = false
         textFieldToChange.isEnabled = true
     }
     override func loadView() {
-        view = CreatePinView()
+        view = EnterPinView()
     }
     override func viewDidAppear(_ animated: Bool) {
         contentView.digit1.textField.becomeFirstResponder()
@@ -62,7 +59,70 @@ class EnterPin : BaseViewController {
     }
     
     override func handleNavigation() {
-        
+        if (touchStartView is ArrowButton) {
+            print(verificationCode)
+            print(UserDefaultData.localDataManager.pin)
+            if (verificationCode == UserDefaultData.localDataManager.pin) {
+                
+                UIView.animate(withDuration: 0.5, animations: {
+                    for view in self.contentView.leftDigits.subviews + self.contentView.rightDigits.subviews {
+                        if view is DigitTextField {
+                            let digit = (view as! DigitTextField)
+                            
+                            digit.line.backgroundColor = .green
+                        }
+                    }
+                }, completion: { (value: Bool) in
+                    UIView.animate(withDuration: 0.5, animations: {
+                        for view in self.contentView.leftDigits.subviews + self.contentView.rightDigits.subviews {
+                            if view is DigitTextField {
+                                let digit = (view as! DigitTextField)
+                                
+                                digit.line.backgroundColor = .white
+                            }
+                        }
+                    }, completion: { (value: Bool) in
+                            navController.pushViewController(MainApp(), animated: true)
+                    })
+                })
+            } else {
+                UIView.animate(withDuration: 0.5, animations: {
+                    for view in self.contentView.leftDigits.subviews + self.contentView.rightDigits.subviews {
+                        if view is DigitTextField {
+                            let digit = (view as! DigitTextField)
+                            
+                            digit.line.backgroundColor = .red
+                        }
+                    }
+                }, completion: { (value: Bool) in
+                    UIView.animate(withDuration: 0.5, animations: {
+                        for view in self.contentView.leftDigits.subviews + self.contentView.rightDigits.subviews {
+                            if view is DigitTextField {
+                                let digit = (view as! DigitTextField)
+                                
+                                digit.line.backgroundColor = .white
+                            }
+                        }
+                    }, completion: { (value: Bool) in
+                        for view in self.contentView.leftDigits.subviews + self.contentView.rightDigits.subviews {
+                            if view is DigitTextField {
+                                let digit = (view as! DigitTextField)
+                                
+                                digit.textField.fadeOut(withDuration: 0.3)
+                                digit.textField.text = ""
+                                digit.textField.alpha = 1.0
+                            }
+                            
+                            self.textFieldController(current: self.contentView.digit6.textField, textFieldToChange: self.contentView.digit1.textField)
+                            
+                            self.verificationCode = ""
+                            
+                            self.contentView.digit1.textField.becomeFirstResponder()
+                        }
+                    })
+                })
+            }
+        }
     }
 }
 
@@ -144,6 +204,7 @@ extension EnterPin : UITextFieldDelegate {
                     textFieldController(current: contentView.digit6.textField, textFieldToChange: contentView.digit5.textField)
                     contentView.digit5.textField.becomeFirstResponder()
                     self.verificationCode.removeLast()
+                    contentView.arrow.isUserInteractionEnabled = false
                     return false
                 } else {
                     return false

@@ -1,10 +1,4 @@
-//
-//  TextFieldDigit.swift
-//  Encrypter
-//
-//  Created by QuickTutor on 2/28/18.
-//  Copyright © 2018 CPS410. All rights reserved.
-//
+
 
 import Foundation
 import UIKit
@@ -43,7 +37,7 @@ class DigitTextField: BaseView {
         addSubview(textField)
         addSubview(line)
         
-        textField.font = UIFont(name: "Helvetica", size: 25)
+        textField.font = UIFont(name: "Futura", size: 25)
         textField.keyboardAppearance = .dark
         textField.textColor = .white
         textField.tintColor = .clear

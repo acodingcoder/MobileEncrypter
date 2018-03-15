@@ -34,7 +34,10 @@ class CreatePin : BaseViewController {
     @objc
     private func buildVerificationCode(_ textField: UITextField) {
         verificationCode.append(textField.text!)
-        //set defaults
+        
+        if verificationCode.count == 6 {
+            contentView.arrow.isUserInteractionEnabled = true
+        }
     }
     private func textFieldController(current: UITextField, textFieldToChange: UITextField) {
         current.isEnabled = false
@@ -55,7 +58,10 @@ class CreatePin : BaseViewController {
     
     override func handleNavigation() {
         if(touchStartView is ArrowButton) {
-            navController.pushViewController(MainApp(), animated: true)
+            Defaults.pin = verificationCode
+            Defaults.userManager.setDefaults()
+            
+            navController.pushViewController(EnterPin(), animated: true)
         }
     }
 }
@@ -138,6 +144,7 @@ extension CreatePin : UITextFieldDelegate {
                     textFieldController(current: contentView.digit6.textField, textFieldToChange: contentView.digit5.textField)
                     contentView.digit5.textField.becomeFirstResponder()
                     self.verificationCode.removeLast()
+                    contentView.arrow.isUserInteractionEnabled = false
                     return false
                 } else {
                     return false

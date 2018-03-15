@@ -1,10 +1,4 @@
-//
-//  PinView.swift
-//  Encrypter
-//
-//  Created by QuickTutor on 3/14/18.
-//  Copyright © 2018 CPS410. All rights reserved.
-//
+
 
 import Foundation
 import UIKit
@@ -44,18 +38,19 @@ class PinView : GradientView, Keyboardable {
         
         addKeyboardView()
         
-        titleLabel.font = UIFont(name: "Helvetica", size: 20)
+        titleLabel.font = UIFont(name: "Futura", size: 25)
         titleLabel.textColor = .white
         titleLabel.textAlignment = .center
+        
+        arrow.isUserInteractionEnabled = false
         
         applyConstraints()
     }
     
     override func applyConstraints() {
         titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(safeAreaLayoutGuide.snp.top).inset(100)
             make.width.equalToSuperview().multipliedBy(0.8)
-            make.height.equalToSuperview().multipliedBy(0.2)
             make.centerX.equalToSuperview()
         }
         digitView.snp.makeConstraints { (make) in

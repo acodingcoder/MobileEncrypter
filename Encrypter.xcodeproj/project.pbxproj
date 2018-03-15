@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8434B82D2047077600E16170 /* TextFieldDigit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434B82C2047077600E16170 /* TextFieldDigit.swift */; };
+		8434B82D2047077600E16170 /* DigitTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8434B82C2047077600E16170 /* DigitTextField.swift */; };
+		844B8421205B0AD7005F0BC7 /* NavBarButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 844B8420205B0AD7005F0BC7 /* NavBarButtons.swift */; };
 		84609CE92059745500B70A39 /* EnterPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84609CE82059745500B70A39 /* EnterPin.swift */; };
 		84609CEB2059776D00B70A39 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84609CEA2059776D00B70A39 /* PinView.swift */; };
 		84609CED205977E400B70A39 /* ArrowButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84609CEC205977E400B70A39 /* ArrowButton.swift */; };
@@ -25,7 +26,8 @@
 /* Begin PBXFileReference section */
 		0DEE032AF2A40F5C11BF277F /* Pods-Encrypter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Encrypter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Encrypter/Pods-Encrypter.debug.xcconfig"; sourceTree = "<group>"; };
 		638C2A71348BEE893CACC566 /* Pods_Encrypter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Encrypter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8434B82C2047077600E16170 /* TextFieldDigit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldDigit.swift; sourceTree = "<group>"; };
+		8434B82C2047077600E16170 /* DigitTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DigitTextField.swift; sourceTree = "<group>"; };
+		844B8420205B0AD7005F0BC7 /* NavBarButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButtons.swift; sourceTree = "<group>"; };
 		84609CE82059745500B70A39 /* EnterPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPin.swift; sourceTree = "<group>"; };
 		84609CEA2059776D00B70A39 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		84609CEC205977E400B70A39 /* ArrowButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowButton.swift; sourceTree = "<group>"; };
@@ -117,9 +119,10 @@
 			isa = PBXGroup;
 			children = (
 				847BF36E203C8C7100B65D64 /* GradientView.swift */,
-				8434B82C2047077600E16170 /* TextFieldDigit.swift */,
 				84609CEA2059776D00B70A39 /* PinView.swift */,
+				8434B82C2047077600E16170 /* DigitTextField.swift */,
 				84609CEC205977E400B70A39 /* ArrowButton.swift */,
+				844B8420205B0AD7005F0BC7 /* NavBarButtons.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -267,10 +270,11 @@
 				847BF368203C833100B65D64 /* UIViewExtensions.swift in Sources */,
 				847BF36D203C868200B65D64 /* CreatePin.swift in Sources */,
 				84609CEB2059776D00B70A39 /* PinView.swift in Sources */,
-				8434B82D2047077600E16170 /* TextFieldDigit.swift in Sources */,
+				8434B82D2047077600E16170 /* DigitTextField.swift in Sources */,
 				84609CED205977E400B70A39 /* ArrowButton.swift in Sources */,
 				84609CE92059745500B70A39 /* EnterPin.swift in Sources */,
 				847BF365203C82C500B65D64 /* BaseCode.swift in Sources */,
+				844B8421205B0AD7005F0BC7 /* NavBarButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
