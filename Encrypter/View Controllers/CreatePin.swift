@@ -31,6 +31,7 @@ class CreatePin : BaseViewController {
         }
         contentView.digit1.textField.isEnabled = true
     }
+    
     @objc
     private func buildVerificationCode(_ textField: UITextField) {
         verificationCode.append(textField.text!)
@@ -39,10 +40,12 @@ class CreatePin : BaseViewController {
             contentView.arrow.isUserInteractionEnabled = true
         }
     }
+    
     private func textFieldController(current: UITextField, textFieldToChange: UITextField) {
         current.isEnabled = false
         textFieldToChange.isEnabled = true
     }
+    
     override func loadView() {
         view = CreatePinView()
     }

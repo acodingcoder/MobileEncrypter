@@ -21,6 +21,7 @@
 		847BF36A203C858300B65D64 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BF369203C858300B65D64 /* UserDefaults.swift */; };
 		847BF36D203C868200B65D64 /* CreatePin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BF36C203C868200B65D64 /* CreatePin.swift */; };
 		847BF36F203C8C7100B65D64 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847BF36E203C8C7100B65D64 /* GradientView.swift */; };
+		84B95828205EF8280050575A /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B95827205EF8280050575A /* UIImageViewExtensions.swift */; };
 		DDB402155CAB06687FE2B279 /* Pods_Encrypter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 638C2A71348BEE893CACC566 /* Pods_Encrypter.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		847BF369203C858300B65D64 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		847BF36C203C868200B65D64 /* CreatePin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePin.swift; sourceTree = "<group>"; };
 		847BF36E203C8C7100B65D64 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
+		84B95827205EF8280050575A /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		CF51531618BB2D6924C0E4EE /* Pods-Encrypter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Encrypter.release.xcconfig"; path = "Pods/Target Support Files/Pods-Encrypter/Pods-Encrypter.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 			children = (
 				847BF367203C833100B65D64 /* UIViewExtensions.swift */,
 				6F49FD1B205B31D100A0553B /* UIImageExtensions.swift */,
+				84B95827205EF8280050575A /* UIImageViewExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -249,10 +252,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Encrypter/Pods-Encrypter-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyRSA/SwiftyRSA.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyRSA.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -266,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84B95828205EF8280050575A /* UIImageViewExtensions.swift in Sources */,
 				847BF36A203C858300B65D64 /* UserDefaults.swift in Sources */,
 				8472C826203C7F4D0084FC75 /* AppDelegate.swift in Sources */,
 				84609CEF2059789000B70A39 /* MainApp.swift in Sources */,

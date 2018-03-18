@@ -118,18 +118,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //Sets statusbar to white
         UIApplication.shared.statusBarStyle = .lightContent
-        
+        print(Defaults.imagesData.count)
         //Check if pin is set
-          var controller : UIViewController? = nil
-//        let user = UserDefaultData.localDataManager
-//
-//        if (user.pin.isEmpty) {
-//            controller = CreatePin()
-//        } else {
-//            controller = EnterPin()
-//        }
-//
-        controller = Playgrounds()
+        var controller : UIViewController? = nil
+        let user = UserDefaultData.localDataManager
+        
+        if (user.pin.isEmpty) {
+            controller = CreatePin()
+        } else {
+            controller = EnterPin()
+        }
+
+        //controller = Playgrounds()
         
         navController = UINavigationController(rootViewController: controller!)
         navController.navigationBar.isHidden = true

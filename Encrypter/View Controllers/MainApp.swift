@@ -37,7 +37,7 @@ class MainAppView : GradientView {
         tableView.isScrollEnabled = true
         tableView.separatorInset.left = 0
         tableView.backgroundColor = .clear
-        tableView.separatorColor = .white
+        tableView.separatorColor = .gray
         
         applyConstraints()
     }
@@ -97,6 +97,9 @@ class MainApp : BaseViewController, UIImagePickerControllerDelegate, UINavigatio
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
+        contentView.tableView.dataSource = self
+        contentView.tableView.delegate = self
+        contentView.tableView.register(imageViewCell.self, forCellReuseIdentifier: "imageViewCell")
     }
     
     override func loadView() {
@@ -116,9 +119,13 @@ class MainApp : BaseViewController, UIImagePickerControllerDelegate, UINavigatio
         }
     }
     
-    private func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    @objc func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            self.image = pickedImage
+            let imageData: Data = UIImagePNGRepresentation(pickedImage)!
+            let strBase64 = imageData.base64EncodedString(options: .lineLength64Characters)
+            
+            Defaults.imagesData.append(strBase64)
+            Defaults.userManager.setImages()
         }
         
         dismiss(animated: true, completion: nil)
@@ -126,5 +133,50 @@ class MainApp : BaseViewController, UIImagePickerControllerDelegate, UINavigatio
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         dismiss(animated: true, completion: nil)
+    }
+}
+
+
+extension MainApp : UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Defaults.imagesData.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell : imageViewCell = tableView.dequeueReusableCell(withIdentifier: "imageViewCell") as! imageViewCell
+        cell.imageView?.image = Defaults.images[indexPath.row]
+        cell.imageView?.scaleImage()
+        
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+class imageViewCell : UITableViewCell {
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        configureTableViewCell()
+    }
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configureTableViewCell() {
+        backgroundColor = .clear
+        
+        var imageView = UIImageView()
+        addSubview(imageView)
+        
+        imageView.snp.makeConstraints { (make) in
+            make.height.equalTo(65)
+            make.left.equalToSuperview().inset(15)
+            make.centerY.equalToSuperview()
+        }
+        
+        imageView.layer.cornerRadius = 6
     }
 }

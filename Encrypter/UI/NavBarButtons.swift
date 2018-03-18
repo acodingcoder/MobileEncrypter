@@ -37,7 +37,7 @@ class NavbarButtonImage : NavbarButton, Interactable {
     
     override func applyConstraints() {
         image.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview().inset(5)
+            make.centerY.equalToSuperview()
             make.centerX.equalToSuperview()
         }
     }

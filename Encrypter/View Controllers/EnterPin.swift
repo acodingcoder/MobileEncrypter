@@ -63,6 +63,7 @@ class EnterPin : BaseViewController {
             print(verificationCode)
             print(UserDefaultData.localDataManager.pin)
             if (verificationCode == UserDefaultData.localDataManager.pin) {
+                Defaults.userManager.loadImages()
                 
                 UIView.animate(withDuration: 0.5, animations: {
                     for view in self.contentView.leftDigits.subviews + self.contentView.rightDigits.subviews {
